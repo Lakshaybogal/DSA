@@ -7,7 +7,7 @@ int main()
     int arr[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        cin >> arr[i]; //scanf("%d",&arr[i]);
     }
     int counter = 1;
     while (counter < n)
@@ -27,7 +27,7 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << endl;
+        cout << arr[i] << endl; //printf("%d",arr[i]);
     }
     return 0;
 }
