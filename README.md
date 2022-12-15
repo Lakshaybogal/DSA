@@ -1,2 +1,2 @@
 # DSA
-Here i am upl
+Here I am uploading data structure and algorithm codes.
