@@ -42,7 +42,10 @@ void insert(struct queue *q, int data)
     }
     else
     {
-        q->front = 0;
+        if(q->front==-1)
+        {
+            q->front = 0;
+        }
         q->rear++;
         q->arr[q->rear] = data;
     }
