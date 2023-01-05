@@ -47,7 +47,7 @@ int pop()
 {
     if (Top == NULL)
     {
-        printf("Stack is Empty");
+        return -1;
     }
     else
     {
@@ -100,19 +100,25 @@ int main()
 
         case 2:
         {
-            int element = pop();
-            printf("\n%d is pop from the stack.\n", element);
+            int key = pop();
+            if(key==-1)
+            {
+                printf("\nStack is Empty\n");
+            }
+            else
+            printf("\n%d is pop from the stack.\n", key);
             break;
         }
 
         case 3:
         {
-            if(peek()==-1)
+            int key = peek();
+            if(key==-1)
             {
-                printf("\nTop of Stack is Empty\n");
+                printf("\n Stack is Empty\n");
             }
             else
-            printf("\nTop of Stack is : %d\n",  peek());
+            printf("\nTop of Stack is : %d\n",  key);
             break;
         }
 
