@@ -127,7 +127,7 @@ int deleteLastNode()
                 temp = temp->link;
             }
             key = temp->link->data;
-            free(temp->link);
+            free(temp->link->link);
             temp->link = head;
         }
         return key;
