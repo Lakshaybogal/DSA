@@ -106,11 +106,17 @@ int deleteLastNode()
         else
         {
             struct Node *temp;
-            temp = tail;
-            key = temp->data;
-            free(temp);
+            temp = head;
+
+            while (temp->link->link != head)
+            {
+                temp = temp->link;
+            }
+            key = temp->link->data;
+            free(temp->link->link);
             temp->link = head;
         }
+        
         return key;
     }
 }
