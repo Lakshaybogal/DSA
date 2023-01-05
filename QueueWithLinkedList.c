@@ -104,8 +104,9 @@ int main()
         printf("Enter 1 to push in queue\n");
         printf("Enter 2 to pop in queue\n");
         printf("Enter 3 to peek in queue\n");
-        printf("Enter 4 to Exit\n");
-        printf("Enter 5 to display whole queue\n");
+        printf("Enter 4 to display whole queue\n");
+        printf("Enter 5 to Exit\n");
+
         int ch;
         scanf("%d", &ch);
         printf("\n");
@@ -146,13 +147,14 @@ int main()
 
         case 4:
         {
-            exit(1);
-            break;
+            printf("\nQueue is : ");
+            display();
+          
         }
         case 5:
         {
-            printf("\nQueue is : ");
-            display();
+            exit(1);
+            break;
         }
 
         default:
