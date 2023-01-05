@@ -153,7 +153,7 @@ void insertAtPos(struct Node **ptr, int key, int pos, int len)
     }
 }
 
-int deleteAtPos(struct Node **ptr, int pos, int len) // error
+int deleteAtPos(struct Node **ptr, int pos, int len)
 {
     if (pos < 1 || pos > len)
     {
@@ -185,9 +185,11 @@ int deleteAtPos(struct Node **ptr, int pos, int len) // error
                 temp = temp->link;
                 indx++;
             }
+            struct Node* temp1;
+            temp1=temp->link;
             key = temp->link->data;
             temp->link = temp->link->link;
-            free(temp);
+            free(temp1);
         }
         return key;
     }
