@@ -1,57 +1,68 @@
-# include <stdio.h>
-# include <stdlib.h>
+#include<stdio.h>
 
-struct stack{
-    int size;
-    int top ;
-    int *arr ;
-};
-void create(struct stack *s1){
-    s1->size = 5;
-    s1->arr = (int*)malloc(s1->size*sizeof(int));
-    if(s1->arr == NULL)
-    printf("Stack not created!!");
-    else
-    s1->top = -1;
+char stack[100];
+int top = -1;
+
+void push(char x)
+{
+    stack[++top] = x;
 }
-int isFull(struct stack *s1){
-    if(s1->top == s1->size-1){
-        printf("\nSize FULL!!!\n");
-        printf("Reallocating memory!!\n");
-        s1->arr = realloc(s1->arr,s1->size*sizeof(int));
-        s1->size = (s1->size)*2;
-        return 1; 
-    }
+
+char pop()
+{
+    if(top == -1)
+        return -1;
     else
+        return stack[top--];
+}
+
+int priority(char x)
+{
+    if(x == '(')
+        return 0;
+    if(x == '+' || x == '-')
+        return 1;
+    if(x == '*' || x == '/')
+        return 2;
     return 0;
 }
-void push(struct stack *s1, int key){
-    if(isFull(s1)){
-        push(s1,key);
+int CheckAlp(char exp)
+{
+    if( (exp>='A' && exp<='Z' )|| (exp>='a' && exp<='z' ))
+    {
+        return 1;
     }
-    else{
-        s1->top++;
-        s1->arr[s1->top]=key;
-        
+    return 0;
+}
+int main()
+{
+    char exp[100];
+    char x;
+    printf("Enter the expression : ");
+    scanf("%s",exp);
+    printf("\n");
+    int i =0;
+    while(exp[i] != '\0')
+    {
+        if(CheckAlp(exp[i]))
+            printf("%c ",exp[i]);
+        else if(exp[i] == '(')
+            push(exp[i]);
+        else if(exp[i] == ')')
+        {
+            while((x = pop()) != '(')
+                printf("%c ", x);
+        }
+        else
+        {
+            while(priority(stack[top]) >= priority(exp[i]))
+                printf("%c ",pop());
+            push(exp[i]);
+        }
+        i++;
     }
-}
-void display(struct stack *s1){
-    printf("\nStack is :\n");
-    for(int i=s1->top;i>=0;i--)
-    printf("%d ",s1->arr[i]);
-}
-void main(){
-    struct stack s1;
-    create(&s1);
-    push(&s1,5);
-    push(&s1,4);
-    push(&s1,3);
-    push(&s1,2);
-    push(&s1,1);
-    display(&s1);
-    push(&s1,2);
-    push(&s1,3);
-    push(&s1,4);
-   
-  display(&s1);
+    while(top != -1)
+    {
+        printf("%c ",pop());
+    }return 0;
 }
